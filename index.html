@@ -62,11 +62,15 @@ function component(width, height, color, x, y) {
 function updateGameArea() {
     myGameArea.clear();
     myGamePiece.speedX = 0;
-    myGamePiece.speedY = 0;    
-    if (myGameArea.keys && myGameArea.keys[37] || myGameArea.keys && myGameArea.keys[65]) {myGamePiece.speedX = -2; }
-    if (myGameArea.keys && myGameArea.keys[39] || myGameArea.keys && myGameArea.keys[68]) {myGamePiece.speedX = 2; }
-    if (myGameArea.keys && myGameArea.keys[38] || myGameArea.keys && myGameArea.keys[87]) {myGamePiece.speedY = -2; }
-    if (myGameArea.keys && myGameArea.keys[40] || myGameArea.keys && myGameArea.keys[83]) {myGamePiece.speedY = 2; }
+    myGamePiece.speedY = 0;   
+    //left
+    if (myGameArea.keys && myGameArea.keys[37] && myGamePiece.x - 0 > 0 || myGameArea.keys && myGameArea.keys[65] && myGamePiece.x - 0 > 0) {myGamePiece.speedX = -2; }
+    //right
+    if (myGameArea.keys && myGameArea.keys[39] && myGamePiece.x + 30 < 480 || myGameArea.keys && myGameArea.keys[68] && myGamePiece.x + 30 < 480) {myGamePiece.speedX = 2; }
+    //up
+    if (myGameArea.keys && myGameArea.keys[38] && myGamePiece.y - 0 > 0 || myGameArea.keys && myGameArea.keys[87] && myGamePiece.y - 0 > 0) {myGamePiece.speedY = -2; }
+    //down
+    if (myGameArea.keys && myGameArea.keys[40] && myGamePiece.y + 30 + 0 < 270 || myGameArea.keys && myGameArea.keys[83] && myGamePiece.y + 30 + 0 < 270) {myGamePiece.speedY = 2; }
     myGamePiece.newPos();    
     myGamePiece.update();
 }
